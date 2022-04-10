@@ -1,8 +1,44 @@
 body {
     font-family: 'Josefin Sans', sans-serif;
+    color: white;
+}
+
+
+#logo {
+  text-align: center;
 }
 
 #search {
-    border-radius: 25px;
-    width: 700px;
+  border-radius: 50px;
+  width: 700px;
+  box-shadow: -50 25 40px rgb(20, 200, 200);
+}
+
+.search-form {
+  box-shadow: -50 25 40px rgb(20, 200, 200);
+  min-width: 200px;
+  max-width: 300px;
+}
+
+.search-results {
+  position: absolute;
+  top: 250px;
+  left: 10%;
+  background-color: black;
+
+  
+}
+
+.result-item {
+  color: white;
+  display: block;
+  padding: 10px 20px 10px 20px;
+}
+
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
 }
