@@ -101,7 +101,7 @@ searchEl.addEventListener("submit", function(e) {
 $("#apiSwitch").on("click", function() {
   if (searchEl.id == "game-search-form") {
     $(searchEl).attr("id", "movie-search-form");
-    $("#search").attr("placeholder", "Search Movies and Tv Shows");
+    $("#search").attr("placeholder", "Search Movies and TV Shows");
     console.log(searchEl);
   }
   else if (searchEl.id == "movie-search-form") {
