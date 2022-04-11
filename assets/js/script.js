@@ -6,7 +6,7 @@ var data;
 
 
 var getGameData = function(game) {
-  var apiUrl = "https://api.rawg.io/api/games?search=" + game + "&key=1162dfcd4c004cc3adeeaa606112ab38";
+  var apiUrl = "https://api.rawg.io/api/games?page_size=50&search=" + game + "&key=1162dfcd4c004cc3adeeaa606112ab38";
   fetch(apiUrl).then(function(response) {
     if (response.ok) {
       response.json().then(function(response) {
@@ -45,8 +45,9 @@ var showResults = function(response) {
 
   if (searchEl.id == "game-search-form") {
     for (i = 0; i < response.results.length; i++) {
-      var searchItem = document.createElement("div");
-      searchItem.addEventListener("click", itemClickHandler);
+      var searchItem = document.createElement("a");
+      // searchItem.addEventListener("click", itemClickHandler);
+      searchItem.setAttribute("href", "./games/game.html?id=_" + response.results[i].id + "_&game=_" + response.results[i].name);
       searchItem.id = "result-" + i;
       searchItem.className = "result-item";
       searchItem.textContent = response.results[i].name;
@@ -55,8 +56,9 @@ var showResults = function(response) {
   }
   else {
     for (i = 0; i < response.results.length; i++) {
-      var searchItem = document.createElement("div");
-      searchItem.addEventListener("click", itemClickHandler);
+      var searchItem = document.createElement("a");
+      // searchItem.addEventListener("click", itemClickHandler);
+      searchItem.setAttribute("href", "./movies/movie.html" + "?movie=" + response.results[i].title);
       searchItem.id = "result-" + i;
       searchItem.className = "result-item";
       searchItem.textContent = response.results[i].title;
@@ -66,12 +68,12 @@ var showResults = function(response) {
 }
 
 
-var itemClickHandler = function () {
-  removeAllChildren(searchResults);
-  console.log("Item Clicked");
-  document.querySelector("#item-description").classList.remove("hide");
-  document.querySelector("#item-description").classList.add("show");
-}
+// var itemClickHandler = function () {
+//   removeAllChildren(searchResults);
+//   console.log("Item Clicked");
+//   document.querySelector("#item-description").classList.remove("hide");
+//   document.querySelector("#item-description").classList.add("show");
+// }
 
 
 var removeAllChildren = function(container) {
