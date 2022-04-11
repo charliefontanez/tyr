@@ -1,14 +1,23 @@
 # Tyr
 
-## Summary
+## Description
+
+
+  A site to look up content and save to a watch later list.
+
+
 
 ## Technologies 
 * HTML -
 * CSS -
 * JavaScript -
-## Code Breakdown
+* RAWG API
+* TMDB API
+* Bulma
 
 ## Active Page
 
+https://charliefontanez.github.io/tyr/
+
 ## Page Screenshot
-![screenshot]
+![image](./tyr.png)
