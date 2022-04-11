@@ -53,7 +53,9 @@ fetch("https://api.rawg.io/api/games/" + id + "?key=1162dfcd4c004cc3adeeaa606112
   }
 });
 
-// Handles library button
+
+
+
 var libraryButton = function() {
   console.log("click");
 
@@ -62,7 +64,7 @@ var libraryButton = function() {
     window.localStorage.setItem("gameList", JSON.stringify(gameList));
     libraryButtonEl.textContent = "Added to list ";
     isInLibrary = true;
-    libraryButtonEl.style.color = "#2d9b2d";
+    libraryButtonEl.style.color = "#10ac84";
   }
   else {
     for (i = 0; i < gameList.length; i++) {

@@ -23,7 +23,7 @@ var getGameData = function(game) {
 var getMovieData = function(movie) {
   movie = movie.trim();
 
-  fetch("https://api.themoviedb.org/3/search/movie?api_key=ad632fafb63b4f5e153703fe70e7b5e4&query=" + movie)
+  fetch("https://api.themoviedb.org/3/search/multi?api_key=ad632fafb63b4f5e153703fe70e7b5e4&query=" + movie)
   .then(function(response) {
     if (response.ok) {
     response.json().then(function(response) {
@@ -46,7 +46,6 @@ var showResults = function(response) {
   if (searchEl.id == "game-search-form") {
     for (i = 0; i < response.results.length; i++) {
       var searchItem = document.createElement("a");
-      // searchItem.addEventListener("click", itemClickHandler);
       searchItem.setAttribute("href", "./games/game.html?id=_" + response.results[i].id + "_&game=_" + response.results[i].name);
       searchItem.id = "result-" + i;
       searchItem.className = "result-item";
@@ -57,11 +56,16 @@ var showResults = function(response) {
   else {
     for (i = 0; i < response.results.length; i++) {
       var searchItem = document.createElement("a");
-      // searchItem.addEventListener("click", itemClickHandler);
-      searchItem.setAttribute("href", "./movies/movie.html" + "?movie=" + response.results[i].title);
+      if (response.results[i].media_type == "movie") {
+        searchItem.setAttribute("href", "./movies/movie.html" + "?movie=" + response.results[i].title);
+        searchItem.textContent = response.results[i].title;
+      }
+      else if (response.results[i].media_type == "tv") {
+        searchItem.setAttribute("href", "./movies/movie.html" + "?movie=" + response.results[i].name);
+        searchItem.textContent = response.results[i].name;
+      }
       searchItem.id = "result-" + i;
       searchItem.className = "result-item";
-      searchItem.textContent = response.results[i].title;
       searchResults.appendChild(searchItem);
     }
   }
